@@ -2,14 +2,14 @@ from node import Node
 from action import Action
 
 class Mdp:
-    GAMMA = 0.6
+    GAMMA = 0.8
 
     CONV_FACTOR = 10e-9
 
     @staticmethod
     def Q(state, action, board, circular):
         return {"action": action,
-                "value": sum(transition.prob * (transition.reward + Mdp.GAMMA * board[transition.end_pt].value)
+                "value": sum(transition.prob*(transition.reward + Mdp.GAMMA * board[transition.end_pt].value)
                              for transition in state.set_transitions(action, board, circular))}
 
     @staticmethod
@@ -25,7 +25,7 @@ class Mdp:
         board[-1].value = 0
         print(board)
         while True:
-            for i in range(len(board) - 1):
+            for i in range(len(board)-1):
                 state = board[i]
                 if state.pos == 14:
                     state.value = 0
@@ -36,8 +36,8 @@ class Mdp:
                         if q["value"] == state.new_value:
                             state.optimal_action = q["action"]
 
+
             if max(abs(state.value - state.new_value) for state in board) < Mdp.CONV_FACTOR:
-                #return {"Expec": [node.new_value for node in board], "Dice": [node.optimal_action for node in board]}
                 return numpy.array([node.new_value for node in board[:-2]]), \
                        numpy.array([dices[node.optimal_action] for node in board[:-2]])
 
