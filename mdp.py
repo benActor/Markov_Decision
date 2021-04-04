@@ -14,6 +14,12 @@ class Mdp:
 
     @staticmethod
     def markovDecision(layout, circle):
+        import numpy
+        dices = {
+            "security_dice": 1,
+            "normal_dice": 2,
+            "risky_dice": 3
+        }
         board = [Node(pos, layout[pos], 0) for pos in range(len(layout))]
         board[0].n_type, board[-1].n_type = 0, 0
         board[-1].value = 0
@@ -31,7 +37,9 @@ class Mdp:
                             state.optimal_action = q["action"]
 
             if max(abs(state.value - state.new_value) for state in board) < Mdp.CONV_FACTOR:
-                return {"Expec": [node.new_value for node in board], "Dice": [node.optimal_action for node in board]}
+                #return {"Expec": [node.new_value for node in board], "Dice": [node.optimal_action for node in board]}
+                return numpy.array([node.new_value for node in board[:-2]]), \
+                       numpy.array([dices[node.optimal_action] for node in board[:-2]])
 
             for val in board:
                 val.value = val.new_value
