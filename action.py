@@ -15,14 +15,9 @@ class Action:
 
     @staticmethod
     def draw_prob(d_type, draw, lane):
-        if not draw:
-            for roll in Action.ROLL[d_type]:
-                if roll == draw:
-                    return 1/len(Action.ROLL[d_type])
-        else:
-            for roll in Action.ROLL[d_type]:
-                if roll == draw:
-                    return 1/(len(Action.ROLL[d_type])*lane)
+        for roll in Action.ROLL[d_type]:
+            if roll == draw:
+                return 1 / (len(Action.ROLL[d_type]) * lane)
 
     @staticmethod
     def prob(s_node, d_type, draw):
@@ -32,5 +27,4 @@ class Action:
         elif d_type == "security_dice":
             return Action.draw_prob(d_type, draw, lane)
         else:
-            lane = 2 if s_node.pos == 1 else 1
             return Action.draw_prob(d_type, draw, lane)
