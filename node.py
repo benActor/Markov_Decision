@@ -132,7 +132,7 @@ class Node:
                                        "prob": Action.prob(self, "normal_dice", draw)}]
 
 
-                return s
+            return s
 
         elif self.n_type == 0:
             if self.pos not in [2, 9, 12, 13]:
