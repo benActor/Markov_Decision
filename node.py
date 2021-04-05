@@ -66,27 +66,6 @@ class Node:
             return [{"initial_pos": self.pos, "draw": draw, "pos": self.pos + (draw * 5),
                      "prob": Action.prob(self, "security_dice", draw)} for draw in Action.ROLL[d_type]]
 
-    def new_set_penalty(self, via_node):
-        """
-        si le noeud suivant est de type piège on définit la valeur du piège
-
-        :return:
-        """
-        penalty = 0
-
-        if via_node.n_type == 1:
-            penalty = 0
-
-        if via_node.n_type == 2:
-            if via_node.pos in [10, 11, 12]:
-                penalty = via_node.pos - 10
-            else:
-                penalty = via_node.pos - 3 if via_node.pos > 2 else 0
-
-        # if prison stay to the same point
-        if via_node.n_type == 3:
-            penalty = via_node.pos
-
     def set_trap(self):
         penalty = 0
         # if restart penalty brings to pos 0
