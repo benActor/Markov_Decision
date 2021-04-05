@@ -38,8 +38,8 @@ class Mdp:
 
 
             if max(abs(state.value - state.new_value) for state in board) < Mdp.CONV_FACTOR:
-                return [numpy.array([node.new_value for node in board[:-2]]), \
-                        numpy.array([dices[node.optimal_action] for node in board[:-2]])]
+                return [numpy.array([node.new_value for node in board[:-1]]),
+                        numpy.array([dices[node.optimal_action] for node in board[:-1]])]
 
             for val in board:
                 val.value = val.new_value
