@@ -1,5 +1,6 @@
 from mdp import Mdp
-import  numpy
+from simulation import Simulation
+import numpy
 
 if __name__ == '__main__':
     from random import randint
