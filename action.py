@@ -22,9 +22,4 @@ class Action:
     @staticmethod
     def prob(s_node, d_type, draw):
         lane = 2 if s_node.pos == 2 else 1
-        if d_type == "normal_dice":
-            return Action.draw_prob(d_type, draw, lane)
-        elif d_type == "security_dice":
-            return Action.draw_prob(d_type, draw, lane)
-        else:
-            return Action.draw_prob(d_type, draw, lane)
+        return Action.draw_prob(d_type, draw, lane)
