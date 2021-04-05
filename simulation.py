@@ -46,7 +46,7 @@ class Simulation:
         if initial_pos == 2:
             lane = choice([1, 2])
             if lane == 2:
-                pos = initial_pos + 7 + draw
+                pos = initial_pos + 8 + draw
             else:
                 pos = initial_pos + draw
         elif initial_pos in [7, 8, 9]:
