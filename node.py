@@ -363,7 +363,6 @@ class Node:
     def equal(a, b):
         return a["initial_pos"] == b["initial_pos"] and a["pos"] == b["pos"]
 
-
     @staticmethod
     def a_in_l(l, a):
         if not l:
@@ -392,7 +391,6 @@ class Node:
         if dupli:
             unique.append(Node.combine_prob(dupli))
         return unique
-
 
     @staticmethod
     def rem_duplicate(tran_list):
