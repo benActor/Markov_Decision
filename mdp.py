@@ -22,7 +22,7 @@ class Mdp:
         }
         board = [Node(pos, layout[pos], 0) for pos in range(len(layout))]
         board[0].n_type, board[-1].n_type = 0, 0
-        board[-1].value, board[-1].value = 0, 0
+        board[-1].value = 0
         print(board)
 
         while True:
