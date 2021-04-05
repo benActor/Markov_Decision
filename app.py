@@ -6,6 +6,8 @@ if __name__ == '__main__':
     from random import randint
     layout = numpy.array([randint(0, 4) for i in range(15)])
 
-    print(Mdp.markovDecision(layout, True))
+    optimal_policy = Mdp.markovDecision(layout, True)[1]
 
-    print(Simulation.play(layout, Mdp.markovDecision(layout, True), True))
+    print(optimal_policy)
+    print(Simulation.play(layout, optimal_policy, True))
+
