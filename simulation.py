@@ -111,3 +111,11 @@ class Simulation:
         print("the number of turn is: ", number_of_turn)
 
         return number_of_turn
+
+    @staticmethod
+    def play_n_simulations(n, layout, policy, circular=False):
+        results = []
+        for i in range(n):
+            results.append(Simulation.play(layout, policy, circular))
+        return results
+
